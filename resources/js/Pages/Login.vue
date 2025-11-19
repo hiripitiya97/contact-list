@@ -43,7 +43,7 @@
 
 <script setup>
 import { ref } from "vue";
-import axios from "axios";
+import axios from "../axios";
 import { useRouter } from "vue-router";
 
 const router = useRouter();
@@ -58,7 +58,7 @@ async function login() {
     setMessage();
 
     try {
-        const response = await axios.post("/api/login", {
+        const response = await axios.post("/login", {
             email: email.value,
             password: password.value,
         });
@@ -70,7 +70,6 @@ async function login() {
         router.push("/admin");
 
     } catch (error) {
-
         const backendMessage =
             error.response?.data?.message ||
             "Something went wrong. Please try again.";
