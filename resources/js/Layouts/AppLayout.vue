@@ -9,6 +9,6 @@
 </template>
 
 <script setup>
-import SideMenu from "@/componets/SideMenu.vue";
+import SideMenu from "@/Componets/SideMenu.vue";
 import {RouterView} from "vue-router";
 </script>

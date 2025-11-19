@@ -1,8 +1,8 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import ContactList from './pages/Contact/List.vue'
-import ContactCreate from './pages/Contact/Create.vue'
+import ContactList from './Pages/Contact/List.vue'
+import ContactCreate from './Pages/Contact/Create.vue'
 import AppLayout from "@/Layouts/AppLayout.vue";
-import Login from "@/pages/Login.vue";
+import Login from "@/Pages/Login.vue";
 
 const routes = [
 
