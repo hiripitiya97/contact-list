@@ -3,6 +3,7 @@ import ContactList from './Pages/Contact/List.vue'
 import ContactCreate from './Pages/Contact/Create.vue'
 import AppLayout from "@/Layouts/AppLayout.vue";
 import Login from "@/Pages/Login.vue";
+import axios from './axios'
 
 const routes = [
 
@@ -28,6 +29,12 @@ const routes = [
                 name: 'contact.create',
                 component: ContactCreate
             },
+            {
+                path: "/contacts/edit/:id",
+                name: "contacts.edit",
+                component: ContactCreate,
+                props: true,
+            }
         ]
     }
 ]
@@ -37,17 +44,28 @@ const router = createRouter({
     routes,
 })
 
-router.beforeEach((to, from, next) => {
-    const token = localStorage.getItem('token')
 
-    if (to.meta.requiresAuth && !token) {
-        return next('/')
-    }
+router.beforeEach(async (to, from, next) => {
+    const token = localStorage.getItem('token')
 
     if (to.meta.guest && token) {
         return next('/admin')
     }
 
-    next()
+    if (to.meta.requiresAuth) {
+        if (!token) return next('/')
+
+        try {
+            await axios.get('/user', {
+                headers: { Authorization: `Bearer ${token}` }
+            })
+            next()
+        } catch (err) {
+            localStorage.removeItem('token')
+            return next('/')
+        }
+    } else {
+        next()
+    }
 })
 export default router
