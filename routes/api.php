@@ -10,6 +10,8 @@ Route::post('/login', [AuthController::class, 'login']);
 Route::middleware('auth:sanctum')->group(function () {
     Route::get('/user', function (Request $request) { return $request->user(); });
 
+    Route::post('/logout', [AuthController::class, 'logout']);
+
     Route::prefix('contacts')->group(function () {
         Route::get('/', [ContactController::class, 'index']);
         Route::get('/show/{id}', [ContactController::class, 'show']);

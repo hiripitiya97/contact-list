@@ -72,7 +72,6 @@ function closeDeleteModal() {
     modalMessageClass.value = ''
 }
 
-
 async function deleteSelected() {
     const token = localStorage.getItem('token')
     deleteLoading.value = true
@@ -99,7 +98,6 @@ async function deleteSelected() {
         deleteLoading.value = false
     }
 }
-
 
 onMounted(() => {
     fetchContacts()

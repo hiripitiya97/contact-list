@@ -100,8 +100,6 @@ import { useRouter } from 'vue-router'
 
 const searchTerm = ref("");
 
-
-
 const router = useRouter()
 
 const emit = defineEmits(['edit-data', 'delete-data', 'search'])

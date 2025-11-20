@@ -44,7 +44,7 @@
         <div class="sticky inset-x-0 bottom-0 border-t border-gray-100">
             <button
                 @click="logout"
-                class="px-5 py-2 bg-red-600 text-white font-semibold rounded-lg shadow-md hover:bg-red-700 active:bg-red-800 focus:outline-none focus:ring-2 focus:ring-red-500 transition duration-200"
+                class="px-3 py-1 bg-red-600 text-white font-semibold rounded-lg shadow-md hover:bg-red-700 active:bg-red-800 focus:outline-none focus:ring-2 focus:ring-red-500 transition duration-200"
             >
                 Logout
             </button>
