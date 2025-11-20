@@ -1,8 +1,12 @@
 <template>
+    <div class="flex items-center justify-between mt-6 mb-5 mx-2">
+        <h1 class="text-2xl font-semibold text-gray-800">Contact Form</h1>
+    </div>
+
     <div class="max-w-xl bg-white border border-gray-200 shadow-sm rounded-xl p-8">
 
         <h2 class="text-2xl font-bold text-gray-800 mb-6">
-            <span v-if="isEdit">Edit</span> Contact Information
+            <span v-if="isEdit">Edit</span> <span v-else>Create</span> Contact
         </h2>
 
         <form @submit.prevent="submitForm" class="space-y-6 text-left">

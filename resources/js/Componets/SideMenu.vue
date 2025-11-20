@@ -42,24 +42,41 @@
         </div>
 
         <div class="sticky inset-x-0 bottom-0 border-t border-gray-100">
-            <a href="#" class="flex items-center gap-2 bg-white p-4 hover:bg-gray-50">
-                <img alt="" src="https://images.unsplash.com/photo-1600486913747-55e5470d6f40?auto=format&amp;fit=crop&amp;q=80&amp;w=1160" class="size-10 rounded-full object-cover">
-
-                <div>
-                    <p class="text-xs">
-                        <strong class="block font-medium">Eric Frusciante</strong>
-
-                        <span> eric@frusciante.com </span>
-                    </p>
-                </div>
-            </a>
+            <button
+                @click="logout"
+                class="px-5 py-2 bg-red-600 text-white font-semibold rounded-lg shadow-md hover:bg-red-700 active:bg-red-800 focus:outline-none focus:ring-2 focus:ring-red-500 transition duration-200"
+            >
+                Logout
+            </button>
         </div>
     </div>
 
 </template>
 
 <script setup >
-import { RouterView } from 'vue-router'
+import { useRouter } from 'vue-router'
+import axios from "../axios.js";
+
+const router = useRouter();
+const logout = async () => {
+    try {
+        const token = localStorage.getItem("token");
+
+        await axios.post(
+            "/logout",
+            {},
+            {
+                headers: { Authorization: `Bearer ${token}` },
+            }
+        );
+
+    } catch (error) {
+        console.error("Logout failed:", error);
+    } finally {
+        localStorage.removeItem("token");
+        router.push({ name: "login" });
+    }
+};
 
 </script>
 
